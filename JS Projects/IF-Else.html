@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>If Else Project</title>
+</head>
+
+<body>
+
+<h1>If Statement JavaScript Project</h1>
+
+<p id="output"></p>
+
+<h3>Voting Check</h3>
+<input type="number" id="age" placeholder="Enter Age">
+<button onclick="checkIf()">Check Vote</button>
+
+<h3>Min & Max</h3>
+<button onclick="minMax()">Find Min & Max (10, 20, 15)</button>
+
+<h3>Choice Program</h3>
+<select id="foodChoice">
+    <option value="1">Tea</option>
+    <option value="2">Coffee</option>
+    <option value="3">Juice</option>
+</select>
+<button onclick="choice()">Select</button>
+
+<h3>Range Programs</h3>
+<button onclick="rangePrograms()">Show Grade, Interest, Bill</button>
+
+<h3>Change Password</h3>
+<button onclick="changePassword()">Check Password</button>
+
+<script>
+
+function checkIf() {
+    let age = Number(document.getElementById("age").value);
+    let result = "";
+
+    if (age >= 18) {
+        result = "Age Entered: " + age + "<br>You are eligible to vote";
+    } else {
+        result = "Age Entered: " + age + "<br>You are NOT eligible to vote";
+    }
+
+    document.getElementById("output").innerHTML = result;
+}
+
+function minMax() {
+    let a = 10, b = 20, c = 15;
+    let max, min;
+
+    if (a > b && a > c) max = a;
+    else if (b > a && b > c) max = b;
+    else max = c;
+
+    if (a < b && a < c) min = a;
+    else if (b < a && b < c) min = b;
+    else min = c;
+
+    document.getElementById("output").innerHTML =
+        "Numbers: " + a + ", " + b + ", " + c + "<br>" +
+        "Max Value: " + max + "<br>" +
+        "Min Value: " + min;
+}
+
+function choice() {
+    let choice = document.getElementById("foodChoice").value;
+    let result = "";
+
+    if (choice == 1) result = "You Selected: Tea";
+    else if (choice == 2) result = "You Selected: Coffee";
+    else if (choice == 3) result = "You Selected: Juice";
+
+    document.getElementById("output").innerHTML =
+        "Choice Value: " + choice + "<br>" + result;
+}
+
+function rangePrograms() {
+    let marks = 85;
+    let grade;
+
+    if (marks >= 90 && marks <= 100) grade = "A";
+    else if (marks >= 75 && marks < 90) grade = "B";
+    else if (marks >= 50 && marks < 75) grade = "C";
+    else grade = "Fail";
+
+    let p = 1000, r = 5, t = 2;
+    let interest = (p * r * t) / 100;
+
+    let units = 120;
+    let bill;
+
+    if (units <= 100) bill = units * 5;
+    else if (units <= 200) bill = (100 * 5) + (units - 100) * 10;
+    else bill = (100 * 5) + (100 * 10) + (units - 200) * 15;
+
+    document.getElementById("output").innerHTML =
+        "Marks: " + marks + "<br>" +
+        "Grade: " + grade + "<br><br>" +
+        "Interest: " + interest + "<br>" +
+        "Bill Units: " + units + "<br>" +
+        "Total Bill: " + bill;
+}
+
+function changePassword() {
+    let oldPassword = "admin123";
+    let inputOld = "admin123";
+    let newPassword = "user456";
+
+    let result = "";
+
+    if (inputOld == oldPassword) {
+        if (newPassword.length >= 6) {
+            result =
+                "Old Password: " + inputOld + "<br>" +
+                "New Password: " + newPassword + "<br>" +
+                "Status: Password Changed Successfully";
+        } else {
+            result = "Password too short (min 6 characters)";
+        }
+    } else {
+        result = "Incorrect old password";
+    }
+
+    document.getElementById("output").innerHTML = result;
+}
+
+</script>
+
+</body>
+
+</html>
