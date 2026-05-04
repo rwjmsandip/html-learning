@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Timer & Slider Project</title>
+</head>
+
+<body>
+
+<h1>JavaScript Timer Project</h1>
+
+<h2>Modal on Page Load (setTimeout)</h2>
+
+<div id="modal" style="display:none; padding:20px; background:lightblue;">
+    Welcome to JavaScript Project
+    <button onclick="closeModal()">Close</button>
+</div>
+
+<h2>Automatic Slider</h2>
+
+<img id="slider" width="300" height="200">
+
+<h2>Counter (setInterval)</h2>
+<p id="counter">0</p>
+<button onclick="stopCounter()">Stop Counter</button>
+
+<h2>Countdown Timer</h2>
+<p id="countdown"></p>
+
+<script>
+
+setTimeout(function () {
+    document.getElementById("modal").style.display = "block";
+}, 2000);
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+let images = [
+    "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d",
+    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "https://images.unsplash.com/photo-1493246507139-91e8fad9978e"
+];
+
+let i = 0;
+
+document.getElementById("slider").src = images[0];
+
+setInterval(function () {
+    i++;
+    if (i >= images.length) {
+        i = 0;
+    }
+    document.getElementById("slider").src = images[i];
+}, 2000);
+
+let count = 0;
+
+let interval = setInterval(function () {
+    count++;
+    document.getElementById("counter").innerHTML = count;
+}, 1000);
+
+function stopCounter() {
+    clearInterval(interval);
+}
+
+let time = 10;
+
+let countdown = setInterval(function () {
+    document.getElementById("countdown").innerHTML = time;
+
+    time--;
+
+    if (time < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "Time Up";
+    }
+
+}, 1000);
+
+</script>
+
+</body>
+
+</html>

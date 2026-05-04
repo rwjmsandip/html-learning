@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Advanced Project</title>
+</head>
+
+<body>
+
+<h1>JavaScript Advanced Concepts Project</h1>
+
+<h2>Form Validation</h2>
+
+<input type="text" id="name" placeholder="Name"><br><br>
+<input type="password" id="password" placeholder="Password"><br><br>
+<input type="email" id="email" placeholder="Email"><br><br>
+
+<input type="date" id="date"><br><br>
+
+Gender:
+<input type="radio" name="gender" value="Male">Male
+<input type="radio" name="gender" value="Female">Female<br><br>
+
+Hobby:
+<input type="checkbox" class="hobby" value="Cricket">Cricket
+<input type="checkbox" class="hobby" value="Music">Music
+<input type="checkbox" class="hobby" value="Reading">Reading<br><br>
+
+<button id="submitBtn">Submit</button>
+
+<p id="output"></p>
+
+<script>
+
+document.querySelector("#submitBtn").addEventListener("click", function () {
+
+    try {
+
+        let name = document.querySelector("#name").value;
+        let password = document.querySelector("#password").value;
+        let email = document.querySelector("#email").value;
+        let date = document.querySelector("#date").value;
+
+        let gender = document.querySelector('input[name="gender"]:checked');
+        let hobbies = document.querySelectorAll(".hobby:checked");
+
+        if (name === "") throw "Name is required";
+        if (password.length < 6) throw "Password must be at least 6 characters";
+        if (email === "") throw "Email is required";
+        if (date === "") throw "Date is required";
+        if (!gender) throw "Select gender";
+
+        let hobbyList = [];
+        hobbies.forEach(h => hobbyList.push(h.value));
+
+        document.querySelector("#output").innerHTML =
+            "Name: " + name + "<br>" +
+            "Email: " + email + "<br>" +
+            "Date: " + date + "<br>" +
+            "Gender: " + gender.value + "<br>" +
+            "Hobbies: " + hobbyList;
+
+    } catch (error) {
+        document.querySelector("#output").innerHTML = "Error: " + error;
+    }
+
+});
+
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+
+    show() {
+        return "Name: " + this.name;
+    }
+}
+
+class Student extends Person {
+    constructor(name, age) {
+        super(name);
+        this.age = age;
+    }
+
+    show() {
+        return this.name + " Age: " + this.age;
+    }
+}
+
+let s1 = new Student("Rahul", 20);
+console.log(s1.show());
+
+class Calc {
+    add(a, b) {
+        return a + b;
+    }
+
+    add(a, b, c) {
+        return a + b + c;
+    }
+}
+
+let c = new Calc();
+console.log(c.add(2, 3, 4));
+
+class Shape {
+    draw() {
+        return "Drawing Shape";
+    }
+}
+
+class Circle extends Shape {
+    draw() {
+        return "Drawing Circle";
+    }
+}
+
+let shape = new Circle();
+console.log(shape.draw());
+
+class Bank {
+    constructor(balance) {
+        this.balance = balance;
+    }
+
+    getBalance() {
+        return this.balance;
+    }
+}
+
+let b = new Bank(5000);
+console.log(b.getBalance());
+
+</script>
+
+</body>
+
+</html>

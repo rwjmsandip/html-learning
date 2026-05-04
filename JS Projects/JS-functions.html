@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Functions Project</title>
+</head>
+
+<body>
+
+<h1>JavaScript Functions Demo</h1>
+
+<p id="output"></p>
+
+<button onclick="normalFunction()">Normal Function</button>
+<button onclick="paramFunction(10,20)">Parameters Function</button>
+<button onclick="returnFunction()">Return Function</button>
+<button onclick="switchProgram()">Switch Program</button>
+<button onclick="recursionFunction()">Recursion</button>
+<button onclick="nestedFunction()">Nested Function</button>
+<button onclick="closureFunction()">Closure</button>
+<button onclick="arrowFunction()">Arrow Function</button>
+<button onclick="iifeFunction()">IIFE</button>
+
+<script>
+
+function normalFunction() {
+    let msg = "This is normal function";
+    document.getElementById("output").innerHTML = msg;
+}
+
+function paramFunction(a, b) {
+    let sum = a + b;
+    document.getElementById("output").innerHTML =
+        "Parameters Function<br>A: " + a + "<br>B: " + b + "<br>Sum: " + sum;
+}
+
+function returnFunction() {
+    function add(x, y) {
+        return x + y;
+    }
+
+    let result = add(5, 15);
+
+    document.getElementById("output").innerHTML =
+        "Return Function Result: " + result;
+}
+
+function switchProgram() {
+    let day = 3;
+    let result = "";
+
+    switch (day) {
+        case 1: result = "Monday"; break;
+        case 2: result = "Tuesday"; break;
+        case 3: result = "Wednesday"; break;
+        case 4: result = "Thursday"; break;
+        default: result = "Invalid Day";
+    }
+
+    document.getElementById("output").innerHTML =
+        "Day Number: " + day + "<br>Day: " + result;
+}
+
+function recursionFunction() {
+    function fact(n) {
+        if (n == 0) return 1;
+        return n * fact(n - 1);
+    }
+
+    let result = fact(5);
+
+    document.getElementById("output").innerHTML =
+        "Factorial of 5 using Recursion: " + result;
+}
+
+function nestedFunction() {
+    function outer() {
+        let msg = "Outer Function";
+
+        function inner() {
+            return msg + " + Inner Function";
+        }
+
+        return inner();
+    }
+
+    document.getElementById("output").innerHTML = outer();
+}
+
+function closureFunction() {
+    function outer() {
+        let count = 0;
+
+        return function inner() {
+            count++;
+            return "Closure Count: " + count;
+        };
+    }
+
+    let counter = outer();
+
+    document.getElementById("output").innerHTML =
+        counter() + "<br>" + counter() + "<br>" + counter();
+}
+
+function arrowFunction() {
+    let add = (a, b) => a + b;
+
+    document.getElementById("output").innerHTML =
+        "Arrow Function Result: " + add(8, 12);
+}
+
+function iifeFunction() {
+    let result = (function () {
+        let a = 10;
+        let b = 20;
+        return "IIFE Result: " + (a + b);
+    })();
+
+    document.getElementById("output").innerHTML = result;
+}
+
+</script>
+
+</body>
+
+</html>

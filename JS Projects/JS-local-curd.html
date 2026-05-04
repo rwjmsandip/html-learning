@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Local Storage CRUD Project</title>
+</head>
+
+<body>
+
+<h1>Student Record System (LocalStorage)</h1>
+
+<input type="text" id="name" placeholder="Enter Name">
+<input type="number" id="age" placeholder="Enter Age">
+
+<button onclick="addData()">Add</button>
+<button onclick="viewData()">View</button>
+
+<h3>Records</h3>
+<p id="output"></p>
+
+<script>
+
+function getData() {
+    let data = localStorage.getItem("students");
+    return data ? JSON.parse(data) : [];
+}
+
+function saveData(data) {
+    localStorage.setItem("students", JSON.stringify(data));
+}
+
+function addData() {
+    let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+
+    let students = getData();
+
+    students.push({ name: name, age: age });
+
+    saveData(students);
+
+    document.getElementById("output").innerHTML = "Data Added";
+}
+
+function viewData() {
+    let students = getData();
+
+    let output = "";
+
+    students.forEach((student, index) => {
+        output +=
+            "Name: " + student.name +
+            " | Age: " + student.age +
+            " " +
+            "<button onclick='editData(" + index + ")'>Edit</button> " +
+            "<button onclick='deleteData(" + index + ")'>Delete</button><br>";
+    });
+
+    document.getElementById("output").innerHTML = output;
+}
+
+function deleteData(index) {
+    let students = getData();
+
+    students.splice(index, 1);
+
+    saveData(students);
+
+    viewData();
+}
+
+function editData(index) {
+    let students = getData();
+
+    let newName = prompt("Enter New Name", students[index].name);
+    let newAge = prompt("Enter New Age", students[index].age);
+
+    students[index].name = newName;
+    students[index].age = newAge;
+
+    saveData(students);
+
+    viewData();
+}
+
+</script>
+
+</body>
+
+</html>

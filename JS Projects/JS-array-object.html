@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JS Arrays & Objects Project</title>
+</head>
+
+<body>
+
+<h1>JavaScript Arrays + Objects Project</h1> 
+<p id="output"></p>
+
+<button onclick="arrayMethods()">Array Methods</button>
+<button onclick="arrayFunctions()">Array Functions</button>
+<button onclick="arrayLoop()">Array Looping</button>
+<button onclick="arrayCalc()">Array Calculation</button>
+<button onclick="objectDemo()">Object Demo</button>
+<button onclick="objectArray()">Objects in Array</button>
+<button onclick="quote()">Random Quote</button>
+
+<script>
+
+function arrayMethods() {
+    let arr = [10, 20, 30];
+
+    arr.push(40);
+    arr.pop();
+    arr.unshift(5);
+    arr.shift();
+    arr.splice(1, 1, 99);
+
+    document.getElementById("output").innerHTML =
+        "Array Result: " + arr;
+}
+
+function arrayFunctions() {
+    let arr = [1, 2, 3, 4, 5, 6];
+
+    let mapResult = arr.map(x => x * 2);
+    let filterResult = arr.filter(x => x > 3);
+    let findResult = arr.find(x => x > 4);
+    let findIndexResult = arr.findIndex(x => x === 3);
+    let includesResult = arr.includes(5);
+    let everyResult = arr.every(x => x > 0);
+    let someResult = arr.some(x => x > 5);
+
+    let output =
+        "Map: " + mapResult + "<br>" +
+        "Filter: " + filterResult + "<br>" +
+        "Find: " + findResult + "<br>" +
+        "FindIndex: " + findIndexResult + "<br>" +
+        "Includes: " + includesResult + "<br>" +
+        "Every: " + everyResult + "<br>" +
+        "Some: " + someResult;
+
+    document.getElementById("output").innerHTML = output;
+}
+
+function arrayLoop() {
+    let arr = [10, 20, 30, 40];
+    let text = "";
+
+    arr.forEach((val, index) => {
+        text += "Index " + index + " = " + val + "<br>";
+    });
+
+    document.getElementById("output").innerHTML = text;
+}
+
+function arrayCalc() {
+    let arr = [10, 20, 30, 40, 50];
+
+    let sum = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+
+    let avg = sum / arr.length;
+
+    document.getElementById("output").innerHTML =
+        "Array: " + arr + "<br>Sum: " + sum + "<br>Average: " + avg;
+}
+
+function objectDemo() {
+    let student = {
+        name: "Rahul",
+        age: 20,
+        city: "Delhi",
+        info: function () {
+            return this.name + " from " + this.city;
+        }
+    };
+
+    document.getElementById("output").innerHTML =
+        "Name: " + student.name + "<br>" +
+        "Age: " + student.age + "<br>" +
+        "Info: " + student.info();
+}
+
+function objectArray() {
+    let students = [
+        { name: "A", marks: 80 },
+        { name: "B", marks: 45 },
+        { name: "C", marks: 90 }
+    ];
+
+    let text = "";
+
+    for (let i = 0; i < students.length; i++) {
+        if (students[i].marks >= 50) {
+            text += students[i].name + " Passed<br>";
+        } else {
+            text += students[i].name + " Failed<br>";
+        }
+    }
+
+    document.getElementById("output").innerHTML = text;
+}
+
+function quote() {
+    let quotes = [
+        "Stay hungry, stay foolish",
+        "Dream big, work hard",
+        "Success is not final",
+        "Never give up",
+        "Code is power"
+    ];
+
+    let random = Math.floor(Math.random() * quotes.length);
+
+    document.getElementById("output").innerHTML =
+        "Quote: " + quotes[random];
+}
+
+</script>
+
+</body>
+
+</html>
