@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Basics Project</title>
+</head>
+
+<body>
+
+<h1>JavaScript Fundamentals Project</h1>
+
+<h2>Output Screen</h2>
+<p id="output"></p>
+
+<h3>Add Two Numbers</h3>
+<input type="number" id="num1" placeholder="Enter first number">
+<input type="number" id="num2" placeholder="Enter second number">
+<button onclick="addNumbers()">Add</button>
+
+<p id="addResult"></p>
+
+<br>
+
+<button onclick="showOutputs()">Show Output Methods</button>
+<button onclick="showVariables()">Variables & Data Types</button>
+<button onclick="showOperators()">Operators</button>
+<button onclick="showConversion()">Type Conversion</button>
+<button onclick="runPrograms()">Run Logical Programs</button>
+
+<script>
+
+function showOutputs() {
+    console.log("Console.log working");
+    alert("Alert Box Working");
+
+    document.getElementById("output").innerHTML =
+        "Console.log → Check console (F12)<br>" +
+        "Alert → Popup shown<br>" +
+        "InnerHTML → Output shown here";
+}
+
+function showVariables() {
+    let name = "Amit";
+    let age = 22;
+    let isStudent = true;
+
+    document.getElementById("output").innerHTML =
+        "Name: " + name + "<br>Age: " + age + "<br>Student: " + isStudent;
+}
+
+function showOperators() {
+    let a = 10;
+    let b = 5;
+
+    let result =
+        "Addition: " + (a + b) + "<br>" +
+        "Subtraction: " + (a - b) + "<br>" +
+        "Multiplication: " + (a * b) + "<br>" +
+        "Division: " + (a / b) + "<br>" +
+        "a > b: " + (a > b) + "<br>" +
+        "Logical AND: " + (a > 5 && b < 10);
+
+    document.getElementById("output").innerHTML = result;
+}
+
+function showConversion() {
+    let x = "100";
+    let y = 50;
+
+    let sum = Number(x) + y;
+
+    document.getElementById("output").innerHTML =
+        "x (string): " + x + "<br>" +
+        "y (number): " + y + "<br>" +
+        "After conversion sum: " + sum;
+}
+
+function runPrograms() {
+
+    let a = 5, b = 10;
+    let temp = a;
+    a = b;
+    b = temp;
+
+    let marks = 80;
+    let grade;
+
+    if (marks >= 90) grade = "A";
+    else if (marks >= 75) grade = "B";
+    else if (marks >= 50) grade = "C";
+    else grade = "Fail";
+
+    let units = 120;
+    let bill;
+
+    if (units <= 100) bill = units * 5;
+    else bill = (100 * 5) + (units - 100) * 10;
+
+    let p = 1000, r = 5, t = 2;
+    let interest = (p * r * t) / 100;
+
+    let basic = 20000;
+    let hra = basic * 0.2;
+    let da = basic * 0.1;
+    let total = basic + hra + da;
+
+    document.getElementById("output").innerHTML =
+        "Swapping: a=" + a + ", b=" + b + "<br><br>" +
+        "Grade: " + grade + "<br>" +
+        "Bill: " + bill + "<br>" +
+        "Interest: " + interest + "<br>" +
+        "Salary: " + total;
+}
+
+function addNumbers() {
+    let n1 = Number(document.getElementById("num1").value);
+    let n2 = Number(document.getElementById("num2").value);
+
+    let sum = n1 + n2;
+
+    document.getElementById("addResult").innerHTML =
+        "Result: " + n1 + " + " + n2 + " = " + sum;
+}
+
+</script>
+
+</body>
+
+</html>
