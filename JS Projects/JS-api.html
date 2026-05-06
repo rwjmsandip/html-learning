@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>API Projects</title>
+<style>
+body{font-family:Arial;margin:20px}
+section{margin-bottom:30px;padding:15px;border:1px solid #ccc}
+button{margin-top:10px}
+img{max-width:200px;display:block;margin-top:10px}
+</style>
+</head>
+<body>
+
+<section>
+<h2>Fetch API - Random Joke</h2>
+<button onclick="getJoke()">Get Joke</button>
+<p id="joke"></p>
+</section>
+
+<section>
+<h2>Movie API With Token</h2>
+<input id="movie" placeholder="Enter movie name">
+<button onclick="getMovie()">Search</button>
+<p id="movieResult"></p>
+</section>
+
+<section>
+<h2>Dog API</h2>
+<button onclick="getDog()">Get Dog</button>
+<img id="dogImg">
+</section>
+
+<section>
+<h2>Weather API</h2>
+<input id="city" placeholder="Enter city">
+<button onclick="getWeather()">Get Weather</button>
+<p id="weather"></p>
+</section>
+
+<section>
+<h2>Corona API</h2>
+<button onclick="getCorona()">Get Data</button>
+<p id="corona"></p>
+</section>
+
+<section>
+<h2>Promises + Async/Await</h2>
+<button onclick="runPromise()">Run</button>
+<p id="promise"></p>
+</section>
+
+<script>
+async function getJoke(){
+let r=await fetch("https://official-joke-api.appspot.com/random_joke")
+let d=await r.json()
+document.getElementById("joke").innerText=d.setup+" - "+d.punchline
+}
+
+async function getMovie(){
+let name=document.getElementById("movie").value
+let r=await fetch("https://www.omdbapi.com/?t="+name+"&apikey=demo")
+let d=await r.json()
+document.getElementById("movieResult").innerText=d.Title+" "+d.Year
+}
+
+async function getDog(){
+let r=await fetch("https://dog.ceo/api/breeds/image/random")
+let d=await r.json()
+document.getElementById("dogImg").src=d.message
+}
+
+async function getWeather(){
+let city=document.getElementById("city").value
+let r=await fetch("https://api.open-meteo.com/v1/forecast?latitude=23&longitude=70&current_weather=true")
+let d=await r.json()
+document.getElementById("weather").innerText=JSON.stringify(d.current_weather)
+}
+
+async function getCorona(){
+let r=await fetch("https://disease.sh/v3/covid-19/all")
+let d=await r.json()
+document.getElementById("corona").innerText="Cases:"+d.cases+" Deaths:"+d.deaths
+}
+
+function runPromise(){
+new Promise((res)=>setTimeout(()=>res("Done"),1000))
+.then(r=>document.getElementById("promise").innerText=r)
+}
+</script>
+
+</body>
+</html>
